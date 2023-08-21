@@ -1,6 +1,8 @@
 from flaskr import create_app
 from .modelos import db, Cancion,Album, Usuario,Medio
 from .modelos import AlbumSchema,UsuarioSchema, CancionSchema
+from .vistas import VistaCanciones, VistaCancion
+from flask_restful import Api
 
 app = create_app('dfault')
 app_context = app.app_context()
@@ -8,6 +10,10 @@ app_context.push()
 
 db.init_app(app)
 db.create_all()
+
+api = Api(app)
+api.add_resource(VistaCanciones, '/canciones')
+api.add_resource(VistaCancion, '/canciones/<int:id>')
 
 with app.app_context():
     album_schema= AlbumSchema()
