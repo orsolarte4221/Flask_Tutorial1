@@ -67,3 +67,19 @@ class AlbumSchema(SQLAlchemyAutoSchema):
         load_instance = True
         #include_fk = True
         #exclude = ('usuario',)
+
+class CancionSchema(SQLAlchemyAutoSchema):
+    class Meta:
+        model = Cancion
+        include_relationships = True
+        load_instance = True
+        #include_fk = True
+        #exclude = ('usuario',)
+
+class UsuarioSchema(SQLAlchemyAutoSchema):
+    class Meta:
+        model = Usuario
+        include_relationships = True
+        load_instance = True
+        #include_fk = True
+        #exclude = ('usuario',)
